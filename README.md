@@ -68,7 +68,7 @@ Follow these steps to install and set up your environment on Windows.
 
 ## Starting Zookeeper
 
-To start the Zookeeper server, follow these steps:
+To start the Zookeeper server :
 
 1. Open a command prompt.
 2. Run the following command to start Zookeeper:
@@ -78,7 +78,7 @@ To start the Zookeeper server, follow these steps:
 
 ## Starting Kafka
 
-To start the Kafka server, follow these steps:
+To start the Kafka server :
 
 1. Open a new command prompt.
 2. Run the following command to start Kafka:
@@ -87,4 +87,80 @@ To start the Kafka server, follow these steps:
     ```
 
 Now your Kafka environment should be up and running on your Windows machine!
+
+
+# Kafka Command Line Operations
+
+This document provides a quick reference for basic Kafka command line operations, including listing topics, creating a topic, describing a topic, producing and consuming messages, and deleting a topic.
+
+## List Topics
+
+To list all the topics:
+
+1. 
+    ```sh
+    kafka-topics --list --bootstrap-server localhost:9092
+    ```
+
+## Create Topic
+
+To create a new topic :
+
+1. 
+    ```sh
+    kafka-topics --create --replication-factor 1 --partitions 1 --topic first-topic --bootstrap-server localhost:9092
+    ```
+   
+    This command will create a topic named `first-topic` with a replication factor of 1 and 1 partition.
+
+## Describe Topic
+
+To describe the properties of the topic `first-topic` :
+
+1. 
+    ```sh
+    kafka-topics --describe --topic first-topic --bootstrap-server localhost:9092
+    ```
+
+## Produce Messages
+
+To produce messages to the topic `first-topic` :
+
+1. 
+    ```sh
+    kafka-console-producer --broker-list localhost:9092 --topic first-topic
+    ```
+   
+    After running the above command, type your message and press `Enter`. For example:
+   
+    ```
+    > Hello Kafka
+    ```
+
+## Consume Messages
+
+To consume messages from the topic `first-topic` :
+
+1. 
+    ```sh
+    kafka-console-consumer --bootstrap-server localhost:9092 --topic first-topic
+    ```
+
+## Delete Topic
+
+To delete the topic `first-topic` :
+
+1. 
+    ```sh
+    kafka-topics --delete --bootstrap-server localhost:9092 --topic first-topic
+    ```
+
+**Note:** If the delete command does not work, you might need to enable topic deletion in the server properties. Add the following line to your `server.properties` file:
+
+```properties
+delete.topic.enable=true
+
+
+
+
 
