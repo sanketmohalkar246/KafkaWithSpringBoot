@@ -47,3 +47,44 @@ Kafka provides three types of message delivery guarantees:
 - **At Most Once:** Messages are delivered zero or one time.
 - **At Least Once:** Messages are delivered one or more times.
 - **Exactly Once:** Messages are delivered exactly once.
+
+# Install and Setup on Windows
+
+Follow these steps to install and set up your environment on Windows.
+
+## Prerequisites
+
+- Ensure you have Java installed on your system.
+- Download and extract Kafka from the [official website](https://kafka.apache.org/downloads).
+
+## Setting Windows Path in Environment Variables
+
+1. Open the Start Menu and search for "Environment Variables."
+2. Click on "Edit the system environment variables."
+3. In the System Properties window, click the "Environment Variables" button.
+4. In the Environment Variables window, under System variables, find and select the "Path" variable, then click "Edit."
+5. Click "New" and add the path to the Kafka `bin` directory (e.g., `C:\Softwares\kafka\bin`).
+6. Click "OK" to save the changes.
+
+## Starting Zookeeper
+
+To start the Zookeeper server, follow these steps:
+
+1. Open a command prompt.
+2. Run the following command to start Zookeeper:
+    ```sh
+    zookeeper-server-start C:\Softwares\kafka\config\zookeeper.properties
+    ```
+
+## Starting Kafka
+
+To start the Kafka server, follow these steps:
+
+1. Open a new command prompt.
+2. Run the following command to start Kafka:
+    ```sh
+    kafka-server-start C:\Softwares\kafka\config\server.properties
+    ```
+
+Now your Kafka environment should be up and running on your Windows machine!
+
