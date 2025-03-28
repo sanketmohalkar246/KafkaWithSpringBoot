@@ -5,7 +5,6 @@ import java.util.Properties;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.serialization.IntegerSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 
@@ -22,11 +21,12 @@ public class OrderProducer {
 		ProducerRecord<String, Integer> record = new ProducerRecord<String, Integer>("OrderTopic", "Mac book pro", 10);
 
 		try {
-			RecordMetadata recordMetadata =  producer.send(record).get();
-			//Sync call
-			System.out.println(recordMetadata.partition());
-			System.out.println(recordMetadata.offset());
-			System.out.println("Message Sent!");
+			// Sync call
+			// RecordMetadata recordMetadata = producer.send(record).get();
+
+			//ASync
+			producer.send(record, new orderCallback());
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
