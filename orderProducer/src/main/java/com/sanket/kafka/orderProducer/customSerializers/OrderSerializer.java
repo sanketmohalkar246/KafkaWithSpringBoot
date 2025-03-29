@@ -12,7 +12,7 @@ public class OrderSerializer implements Serializer<Order> {
 		byte[] response =null;
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
-			objectMapper.writeValueAsString(order).getBytes();
+			response =objectMapper.writeValueAsString(order).getBytes();
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}

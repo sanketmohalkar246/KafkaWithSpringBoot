@@ -1,4 +1,4 @@
-package com.sanket.kafka.orderProducer.customSerializers;
+package com.sanket.kafka.orderConsumer.customDeserializers;
 
 import java.io.Serializable;
 
