@@ -8,7 +8,7 @@ public class UserConsumerService {
 	
 	@KafkaListener(topics = {"user-topic"})
 	public void consumeUserData(Integer age) {
-		
+		System.out.println(age);
 	}
 
 }
