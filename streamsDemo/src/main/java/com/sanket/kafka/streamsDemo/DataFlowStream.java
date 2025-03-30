@@ -22,9 +22,11 @@ public class DataFlowStream {
         StreamsBuilder builder = new StreamsBuilder();
         KStream<String, String> stream = builder.stream("streams-dataflow-input");
         stream.foreach((key, value)-> System.out.println("Key and value "+ key + ", "+ value));
+        stream.to("streams-dataflow-output");
         
         Topology topology = builder.build();
-
+        System.out.println(topology.describe());
+        
         KafkaStreams streams = new KafkaStreams(topology, props);
         streams.start();
         
