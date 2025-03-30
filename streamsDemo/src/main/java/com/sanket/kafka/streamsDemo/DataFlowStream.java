@@ -3,6 +3,7 @@ package com.sanket.kafka.streamsDemo;
 import java.util.Properties;
 
 import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.Topology;
@@ -24,6 +25,11 @@ public class DataFlowStream {
         
         Topology topology = builder.build();
 
+        KafkaStreams streams = new KafkaStreams(topology, props);
+        streams.start();
+        
+        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
+        
 	}
 
 }
